@@ -442,7 +442,7 @@
 
     .titleStylet1 p {
         max-width: 600px;
-        font-size: 15px;
+        font-size: 16px;
     }
 
     .btnstyle {
@@ -495,15 +495,15 @@
 
         padding: 7px 11px;
 
-        font-size: 12px;
+        font-size: 14px;
 
         line-height: 1.25;
     }
 
     .titleStylet1 h1 {
         margin-top: 18px;
-
-        font-size: clamp(38px, 10.5vw, 52px);
+        width: auto;
+        font-size: 44px;
 
         line-height: 1;
 
@@ -515,7 +515,7 @@
 
         margin-top: 18px;
 
-        font-size: 14px;
+        font-size: 16px;
 
         line-height: 1.45;
     }
@@ -529,7 +529,7 @@
     }
 
     .btnstyle a {
-        font-size: 14px;
+        font-size: 16px;
     }
 
 }
@@ -556,13 +556,11 @@
 
         padding: 6px 9px;
 
-        font-size: 11px;
+        font-size: 14px;
     }
 
     .titleStylet1 h1 {
         margin-top: 16px;
-
-        font-size: 34px;
 
         line-height: 1.02;
     }
@@ -570,7 +568,7 @@
     .titleStylet1 p {
         margin-top: 16px;
 
-        font-size: 13px;
+        font-size: 16px;
 
         line-height: 1.4;
     }
@@ -584,7 +582,7 @@
     }
 
     .btnstyle a {
-        font-size: 13px;
+        font-size: 16px;
     }
 
     .btnstyle span {
