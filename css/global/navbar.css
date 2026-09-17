@@ -1,0 +1,396 @@
+.navbar {
+    position: relative;
+    z-index: 1000;
+
+    width: 100%;
+    background-color: #f6f6f6;
+
+    border-top: 2px solid #65c88a;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    min-height: 60px;
+
+    padding: 0 32px;
+
+    gap: 32px;
+}
+
+
+/* LOGO */
+
+.navbar-logo {
+    flex-shrink: 0;
+
+    font-family: "Inria Serif", serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1;
+
+    white-space: nowrap;
+
+    transition: opacity 0.2s ease;
+}
+
+.navbar-logo:hover {
+    opacity: 0.7;
+}
+
+
+/* MENU DESKTOP */
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 28px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar-link {
+    position: relative;
+
+    display: inline-block;
+
+    padding: 8px 0;
+
+    color: #747474;
+
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+
+    white-space: nowrap;
+
+    transition: color 0.2s ease;
+}
+
+.navbar-link:hover {
+    color: #4AD66D;
+}
+
+.navbar-link::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 1.5px;
+
+    background-color: #4AD66D;
+
+    transition: width 0.2s ease;
+}
+
+.navbar-link:hover::after {
+    width: 100%;
+}
+
+
+/* AÇÕES */
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    flex-shrink: 0;
+
+    gap: 12px;
+}
+
+
+/* BOTÃO CONTATO */
+
+.navbar-contact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 89px;
+    height: 32px;
+
+    padding: 0 24px;
+
+    gap: 8px;
+
+    background-color: #181818;
+    color: #f6f6f6;
+
+    border-radius: 3px;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.navbar-contact:hover {
+    background-color: #333333;
+    transform: translateY(-1px);
+}
+
+.navbar-contact-icon {
+    font-size: 17px;
+    line-height: 1;
+}
+
+
+/* MENU MOBILE — BOTÃO */
+
+.navbar-toggle {
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 38px;
+    height: 38px;
+
+    padding: 0;
+
+    background: transparent;
+    border: 0;
+
+    cursor: pointer;
+
+    gap: 6px;
+}
+
+.navbar-toggle span {
+    display: block;
+
+    width: 21px;
+    height: 1.5px;
+
+    background-color: #111111;
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+/* Animação para X */
+
+.navbar-toggle.active span:first-child {
+    transform: translateY(3.75px) rotate(45deg);
+}
+
+.navbar-toggle.active span:last-child {
+    transform: translateY(-3.75px) rotate(-45deg);
+}
+
+
+/* ========================================
+   TABLET
+   769px até 1024px
+======================================== */
+
+@media (max-width: 1024px) {
+
+    .navbar-container {
+        min-height: 68px;
+        padding: 0 28px;
+    }
+
+    .navbar-menu {
+        gap: 24px;
+    }
+
+}
+
+
+/* ========================================
+   TABLET PEQUENO
+   601px até 768px
+======================================== */
+
+@media (max-width: 768px) {
+
+    .navbar-container {
+        min-height: 66px;
+        padding: 0 24px;
+    }
+
+    .navbar-menu {
+        gap: 20px;
+    }
+
+}
+
+
+/* ========================================
+   MOBILE
+   Até 600px
+======================================== */
+
+@media (max-width: 600px) {
+
+    .navbar-container {
+        min-height: 64px;
+        padding: 0 20px;
+    }
+
+    .navbar-logo {
+        font-size: 22px;
+    }
+
+    /* Menu dropdown */
+
+    .navbar-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 0;
+
+        margin: 0;
+        padding: 12px 20px 20px;
+
+        background-color: #ffffff;
+
+        border-bottom: 1px solid #e9e9e9;
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        transform: translateY(-8px);
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease,
+            transform 0.25s ease;
+    }
+
+    /* Menu aberto */
+
+    .navbar-menu.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+
+        transform: translateY(0);
+    }
+
+    /* Links mobile */
+
+    .navbar-link {
+        display: block;
+
+        padding: 15px 0;
+
+        font-size: 16px;
+
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .navbar-link:last-child {
+        border-bottom: 0;
+    }
+
+    .navbar-link::after {
+        display: none;
+    }
+
+    /* Ações */
+
+    .navbar-actions {
+        gap: 8px;
+    }
+
+    .navbar-contact {
+        min-width: 89px;
+        height: 32px;
+
+        padding: 0 10px;
+
+        font-size: 16px;
+    }
+
+    /* Mostrar botão */
+
+    .navbar-toggle {
+        display: flex;
+    }
+
+}
+
+
+/* ========================================
+   MOBILE PEQUENO
+   Até 380px
+======================================== */
+
+@media (max-width: 380px) {
+
+    .navbar-container {
+        padding: 0 16px;
+        gap: 12px;
+    }
+
+    .navbar-logo {
+        font-size: 20px;
+    }
+
+    .navbar-contact {
+        min-width: 82px;
+        padding: 0 8px;
+    }
+
+    .navbar-toggle {
+        width: 32px;
+    }
+
+    .navbar-contact-icon {
+        font-size: 16px;
+    }
+
+}
+
+
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+.navbar-link:focus-visible,
+.navbar-logo:focus-visible,
+.navbar-contact:focus-visible,
+.navbar-toggle:focus-visible {
+    outline: 2px solid #65c88a;
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+
+}

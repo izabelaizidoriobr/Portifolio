@@ -1,0 +1,7 @@
+/* GLOBAL */
+@import url("./css/global/global.css");
+@import url("./css/global/navbar.css");
+
+/* HOME */
+@import url("./css/home/home.css");
+@import url("./css/home/servicos-hm.css");
