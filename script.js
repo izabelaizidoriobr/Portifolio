@@ -1,3 +1,96 @@
+// NAVBAR
+
+"use strict";
+
+const menuToggle = document.querySelector(".menu-toggle");
+const navbarNav = document.querySelector(".navbar-nav");
+const navbar = document.querySelector(".navbar");
+
+const mobileBreakpoint = 768;
+
+
+/* ================================
+   ABRIR E FECHAR MENU
+================================ */
+
+function toggleMenu() {
+    const isOpen = navbarNav.classList.toggle("is-open");
+
+    menuToggle.classList.toggle("is-active", isOpen);
+
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+
+    menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Fechar menu" : "Abrir menu"
+    );
+}
+
+
+/* ================================
+   FECHAR MENU
+================================ */
+
+function closeMenu() {
+    navbarNav.classList.remove("is-open");
+
+    menuToggle.classList.remove("is-active");
+
+    menuToggle.setAttribute("aria-expanded", "false");
+
+    menuToggle.setAttribute("aria-label", "Abrir menu");
+}
+
+
+/* ================================
+   EVENTOS
+================================ */
+
+// Abrir e fechar pelo botão
+menuToggle.addEventListener("click", toggleMenu);
+
+
+// Fechar ao clicar em qualquer link
+navbarNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+});
+
+
+// Fechar ao clicar fora da navbar
+document.addEventListener("click", (event) => {
+
+    const isOpen = navbarNav.classList.contains("is-open");
+
+    const clickedInsideNavbar = navbar.contains(event.target);
+
+    if (isOpen && !clickedInsideNavbar) {
+        closeMenu();
+    }
+
+});
+
+
+// Fechar com a tecla ESC
+document.addEventListener("keydown", (event) => {
+
+    if (event.key === "Escape") {
+        closeMenu();
+    }
+
+});
+
+
+// Fechar ao voltar para desktop
+window.addEventListener("resize", () => {
+
+    if (window.innerWidth > mobileBreakpoint) {
+        closeMenu();
+    }
+
+});
+
+// CARDS PROJETOS
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const carousel = document.querySelector(

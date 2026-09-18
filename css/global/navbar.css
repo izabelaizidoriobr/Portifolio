@@ -1,0 +1,282 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    width: 100%;
+    background: #000;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 1440px;
+    min-height: 88px;
+
+    margin: 0 auto;
+    padding: 0 120px;
+}
+
+
+/* ================================
+   LOGO
+================================ */
+
+.navbar-logo {
+    font-family: "Inria Serif", serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1;
+
+    color: #f6f6f6;
+
+    white-space: nowrap;
+
+    transition: opacity 0.3s ease;
+}
+
+.navbar-logo:hover {
+    opacity: 0.7;
+}
+
+
+/* ================================
+   LINKS
+================================ */
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.navbar-nav a {
+    position: relative;
+
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    color: #f6f6f6;
+
+    transition: opacity 0.3s ease;
+}
+
+.navbar-nav a:not(.navbar-contact)::after {
+    content: "";
+
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+
+    width: 0;
+    height: 1px;
+
+    background: #f6f6f6;
+
+    transition: width 0.3s ease;
+}
+
+.navbar-nav a:not(.navbar-contact):hover::after {
+    width: 100%;
+}
+
+.navbar-nav a:hover {
+    opacity: 0.8;
+}
+
+
+/* ================================
+   BOTÃO CONTATO
+================================ */
+
+.navbar-contact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+    padding: 10px 24px;
+
+    background: #f6f6f6;
+    color: #000 !important;
+
+    border: 1px solid #f6f6f6;
+    border-radius: 999px;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.navbar-contact:hover {
+    background: transparent;
+    color: #f6f6f6 !important;
+    opacity: 1 !important;
+}
+
+
+/* ================================
+   BOTÃO MENU MOBILE
+================================ */
+
+.menu-toggle {
+    display: none;
+
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+
+    width: 44px;
+    height: 44px;
+
+    padding: 8px;
+
+    background: transparent;
+    border: 0;
+
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+
+    width: 100%;
+    height: 1.5px;
+
+    background: #f6f6f6;
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 1024px) {
+
+    .navbar-container {
+        padding: 0 48px;
+    }
+
+    .navbar-nav {
+        gap: 28px;
+    }
+
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+    .navbar-container {
+        min-height: 76px;
+        padding: 0 24px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .navbar-nav {
+        position: absolute;
+        top: 76px;
+        left: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        width: 100%;
+
+        padding: 24px;
+
+        background: #000;
+
+        border-top: 1px solid #242424;
+
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+
+        transform: translateY(-10px);
+
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease,
+            visibility 0.3s ease;
+    }
+
+    .navbar-nav.is-open {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+
+        transform: translateY(0);
+    }
+
+    .navbar-nav a {
+        display: flex;
+        align-items: center;
+
+        width: 100%;
+        min-height: 52px;
+
+        font-size: 16px;
+    }
+
+    .navbar-nav a:not(.navbar-contact)::after {
+        display: none;
+    }
+
+    .navbar-contact {
+        justify-content: center;
+
+        margin-top: 16px;
+        min-height: 48px;
+    }
+
+    /* Animação do botão para X */
+
+    .menu-toggle.is-active span:first-child {
+        transform: translateY(3.75px) rotate(45deg);
+    }
+
+    .menu-toggle.is-active span:last-child {
+        transform: translateY(-3.75px) rotate(-45deg);
+    }
+
+}
+
+
+/* ================================
+   MOBILE PEQUENO
+================================ */
+
+@media (max-width: 400px) {
+
+    .navbar-container {
+        padding: 0 20px;
+    }
+
+    .navbar-logo {
+        font-size: 20px;
+    }
+
+    .navbar-nav {
+        padding: 20px;
+    }
+
+}
