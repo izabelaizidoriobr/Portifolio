@@ -613,9 +613,7 @@
 }
 
 
-/* =========================================================
-   MOBILE
-========================================================= */
+/* MOBILE */
 
 @media (max-width: 600px) {
 
@@ -673,7 +671,7 @@
     .projects-controls {
         margin-top: 20px;
 
-        justify-content: flex-start;
+        justify-content: flex-end;
     }
 
 

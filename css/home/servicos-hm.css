@@ -402,6 +402,12 @@
         border-radius: 13px;
     }
 
+    .contribute-header {
+        width: auto;
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+    }
 
     .contribute-header h2 {
         font-size: 36px;
