@@ -591,3 +591,338 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(sobreSection);
 
 });
+
+
+/* ==================================================
+   CONTATO
+   ================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const form = document.getElementById("contactForm");
+    const statusMessage = document.getElementById("formStatus");
+
+    if (!form) return;
+
+
+    /* ==================================================
+       ANIMAÇÃO DE ENTRADA
+       ================================================== */
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("active");
+
+                    observer.unobserve(entry.target);
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+    revealElements.forEach((element) => {
+        revealObserver.observe(element);
+    });
+
+
+    /* ==================================================
+       ELEMENTOS DO FORMULÁRIO
+       ================================================== */
+
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const subjectInput = document.getElementById("subject");
+    const messageInput = document.getElementById("message");
+
+
+    /* ==================================================
+       VALIDAÇÃO DE E-MAIL
+       ================================================== */
+
+    const isValidEmail = (email) => {
+
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    };
+
+
+    /* ==================================================
+       MOSTRAR ERRO
+       ================================================== */
+
+    const showError = (input, message) => {
+
+        const field = input.closest(".form-field");
+        const error = field.querySelector(".field-error");
+
+        field.classList.add("error");
+
+        if (error) {
+            error.textContent = message;
+        }
+
+    };
+
+
+    /* ==================================================
+       LIMPAR ERRO
+       ================================================== */
+
+    const clearError = (input) => {
+
+        const field = input.closest(".form-field");
+
+        field.classList.remove("error");
+
+        const error = field.querySelector(".field-error");
+
+        if (error) {
+            error.textContent = "";
+        }
+
+    };
+
+
+    /* ==================================================
+       LIMPAR TODOS OS ERROS
+       ================================================== */
+
+    const clearAllErrors = () => {
+
+        form.querySelectorAll(".form-field").forEach((field) => {
+
+            field.classList.remove("error");
+
+            const error = field.querySelector(".field-error");
+
+            if (error) {
+                error.textContent = "";
+            }
+
+        });
+
+    };
+
+
+    /* ==================================================
+       VALIDAÇÃO
+       ================================================== */
+
+    const validateForm = () => {
+
+        let isValid = true;
+
+        clearAllErrors();
+
+
+        /* Nome */
+
+        if (nameInput.value.trim().length < 2) {
+
+            showError(
+                nameInput,
+                "Digite seu nome."
+            );
+
+            isValid = false;
+        }
+
+
+        /* E-mail */
+
+        if (!isValidEmail(emailInput.value.trim())) {
+
+            showError(
+                emailInput,
+                "Digite um e-mail válido."
+            );
+
+            isValid = false;
+        }
+
+
+        /* Assunto */
+
+        if (!subjectInput.value) {
+
+            showError(
+                subjectInput,
+                "Selecione um assunto."
+            );
+
+            isValid = false;
+        }
+
+
+        /* Mensagem */
+
+        if (messageInput.value.trim().length < 10) {
+
+            showError(
+                messageInput,
+                "Conte um pouco mais sobre sua mensagem."
+            );
+
+            isValid = false;
+        }
+
+
+        return isValid;
+
+    };
+
+
+    /* ==================================================
+       LIMPAR ERRO AO DIGITAR
+       ================================================== */
+
+    [
+        nameInput,
+        emailInput,
+        subjectInput,
+        messageInput
+    ].forEach((input) => {
+
+        input.addEventListener("input", () => {
+
+            clearError(input);
+
+            statusMessage.textContent = "";
+            statusMessage.className = "form-status";
+
+        });
+
+    });
+
+
+    /* ==================================================
+       ENVIO
+       ================================================== */
+
+    form.addEventListener("submit", async (event) => {
+
+        event.preventDefault();
+
+
+        if (!validateForm()) {
+
+            statusMessage.textContent =
+                "Confira os campos destacados.";
+
+            statusMessage.className =
+                "form-status error";
+
+            return;
+
+        }
+
+
+        const submitButton =
+            form.querySelector(".contact-submit");
+
+        const submitText =
+            submitButton.querySelector(".submit-text");
+
+
+        const originalText =
+            submitText.textContent;
+
+
+        /* Estado de carregamento */
+
+        submitButton.disabled = true;
+
+        submitText.textContent =
+            "Enviando...";
+
+
+        statusMessage.textContent = "";
+
+
+        /*
+         * ==================================================
+         * INTEGRAÇÃO DO FORMULÁRIO
+         * ==================================================
+         *
+         * Aqui você poderá conectar:
+         *
+         * - Formspree
+         * - Web3Forms
+         * - EmailJS
+         * - seu próprio backend
+         *
+         * Exemplo:
+         *
+         * const formData = new FormData(form);
+         *
+         * await fetch("SUA_URL_API", {
+         *     method: "POST",
+         *     body: formData
+         * });
+         *
+         */
+
+
+        try {
+
+            /*
+             * Simulação temporária.
+             *
+             * Remova este timeout quando
+             * conectar o backend.
+             */
+
+            await new Promise((resolve) => {
+                setTimeout(resolve, 1000);
+            });
+
+
+            statusMessage.textContent =
+                "Mensagem enviada com sucesso! Obrigada pelo contato.";
+
+            statusMessage.className =
+                "form-status success";
+
+
+            form.reset();
+
+
+        } catch (error) {
+
+            console.error(
+                "Erro ao enviar formulário:",
+                error
+            );
+
+
+            statusMessage.textContent =
+                "Não foi possível enviar sua mensagem. Tente novamente.";
+
+            statusMessage.className =
+                "form-status error";
+
+
+        } finally {
+
+            submitButton.disabled = false;
+
+            submitText.textContent =
+                originalText;
+
+        }
+
+    });
+
+});

@@ -617,6 +617,223 @@
 
     </section>
 
+    <!-- SEÇÃO DE CONTATO -->
+    <section class="contact-section" id="contato">
+
+        <div class="contact-container">
+
+            <!-- Cabeçalho -->
+            <header class="contact-header reveal">
+
+                <span class="contact-eyebrow">ENTRE EM CONTATO</span>
+
+                <h2>
+                    Vamos criar algo
+                    <span>que faça a diferença.</span>
+                </h2>
+
+                <p>
+                    Tem um projeto em mente ou uma oportunidade para conversar?
+                    Entre em contato e vamos transformar sua ideia em uma
+                    experiência digital.
+                </p>
+
+            </header>
+
+            <!-- Área principal -->
+            <div class="contact-wrapper">
+
+
+                <!-- CARD INFORMATIVO -->
+                <div class="contact-intro reveal">
+
+                    <div class="intro-content">
+
+                        <span class="intro-label">
+                            Disponível para novos projetos
+                        </span>
+
+                        <h3>
+                            Seu próximo projeto
+                            começa com uma boa conversa.
+                        </h3>
+
+                        <p>
+                            Desenvolvimento web, aplicações mobile e interfaces
+                            pensadas para unir tecnologia, funcionalidade e
+                            uma experiência intuitiva.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Informações -->
+                    <div class="contact-details">
+
+                        <a href="mailto:seuemail@email.com" class="contact-detail">
+                            <span class="detail-icon">
+                                <img src="./assets/icon/arrow_diagonal.svg" alt="" aria-hidden="true">
+                            </span>
+
+                            <span>
+                                <small>E-mail</small>
+                                seuemail@email.com
+                            </span>
+                        </a>
+
+
+                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer"
+                            class="contact-detail">
+                            <span class="detail-icon">
+                                <img src="./assets/icon/arrow_diagonal.svg" alt="" aria-hidden="true">
+                            </span>
+
+                            <span>
+                                <small>LinkedIn</small>
+                                Vamos conversar
+                            </span>
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+                <!-- FORMULÁRIO -->
+                <div class="contact-form-wrapper reveal">
+
+                    <form class="contact-form" id="contactForm" novalidate>
+
+                        <!-- Nome -->
+                        <div class="form-field">
+
+                            <label for="name">
+                                Nome
+                            </label>
+
+                            <input type="text" id="name" name="name" placeholder="Como posso te chamar?"
+                                autocomplete="name" required>
+
+                            <span class="field-error"></span>
+
+                        </div>
+
+                        <!-- E-mail -->
+                        <div class="form-field">
+
+                            <label for="email">
+                                E-mail
+                            </label>
+
+                            <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com"
+                                autocomplete="email" required>
+
+                            <span class="field-error"></span>
+
+                        </div>
+
+                        <!-- Empresa + assunto -->
+                        <div class="form-row">
+
+                            <div class="form-field">
+
+                                <label for="company">
+                                    Empresa
+                                </label>
+
+                                <input type="text" id="company" name="company" placeholder="Sua empresa"
+                                    autocomplete="organization">
+
+                            </div>
+
+
+                            <div class="form-field">
+
+                                <label for="subject">
+                                    Assunto
+                                </label>
+
+                                <select id="subject" name="subject" required>
+
+                                    <option value="" selected disabled>
+                                        Selecione...
+                                    </option>
+
+                                    <option value="Projeto Web">
+                                        Projeto Web
+                                    </option>
+
+                                    <option value="Aplicativo Mobile">
+                                        Aplicativo Mobile
+                                    </option>
+
+                                    <option value="UI/UX Design">
+                                        UI/UX Design
+                                    </option>
+
+                                    <option value="Freelance">
+                                        Freelance
+                                    </option>
+
+                                    <option value="Oportunidade profissional">
+                                        Oportunidade profissional
+                                    </option>
+
+                                    <option value="Outro">
+                                        Outro
+                                    </option>
+
+                                </select>
+
+                                <span class="field-error"></span>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Mensagem -->
+                        <div class="form-field">
+
+                            <label for="message">
+                                Mensagem
+                            </label>
+
+                            <textarea id="message" name="message"
+                                placeholder="Conte um pouco sobre seu projeto ou oportunidade..." rows="5"
+                                required></textarea>
+
+                            <span class="field-error"></span>
+
+                        </div>
+
+                        <!-- Botão -->
+                        <button type="submit" class="contact-submit">
+
+                            <span class="submit-text">
+                                Enviar mensagem
+                            </span>
+
+                            <span class="submit-arrow">
+                                <img src="./assets/icon/arrow-diagonal-bk.svg" alt="" aria-hidden="true">
+                            </span>
+
+                        </button>
+
+
+                        <!-- Status -->
+                        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
     <script src="script.js"></script>
 </body>
 
