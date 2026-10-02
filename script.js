@@ -926,3 +926,131 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+const footer = document.querySelector(".site-footer");
+
+if (footer) {
+
+    /* =====================================================
+       ANO ATUAL
+    ====================================================== */
+
+    const year = footer.querySelector("#site-footer-year");
+
+    if (year) {
+        year.textContent = new Date().getFullYear();
+    }
+
+
+    /* =====================================================
+       ACCORDION DO FOOTER — MOBILE
+    ====================================================== */
+
+    const footerColumns = footer.querySelectorAll(
+        ".site-footer__column"
+    );
+
+    const mobileBreakpoint = 768;
+
+
+    footerColumns.forEach((column) => {
+
+        const button = column.querySelector(
+            ".site-footer__title"
+        );
+
+        if (!button) return;
+
+
+        button.addEventListener("click", () => {
+
+            /* Accordion funciona somente no mobile */
+
+            if (window.innerWidth > mobileBreakpoint) {
+                return;
+            }
+
+
+            const isOpen =
+                column.classList.contains("is-open");
+
+
+            /* Fecha as outras colunas */
+
+            footerColumns.forEach((otherColumn) => {
+
+                otherColumn.classList.remove(
+                    "is-open"
+                );
+
+                const otherButton =
+                    otherColumn.querySelector(
+                        ".site-footer__title"
+                    );
+
+                if (otherButton) {
+                    otherButton.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+                }
+
+            });
+
+
+            /* Abre a coluna selecionada */
+
+            if (!isOpen) {
+
+                column.classList.add("is-open");
+
+                button.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+            }
+
+        });
+
+    });
+
+
+    /* =====================================================
+       RESET AO VOLTAR PARA DESKTOP
+    ====================================================== */
+
+    window.addEventListener("resize", () => {
+
+        if (window.innerWidth > mobileBreakpoint) {
+
+            footerColumns.forEach((column) => {
+
+                column.classList.remove(
+                    "is-open"
+                );
+
+                const button =
+                    column.querySelector(
+                        ".site-footer__title"
+                    );
+
+                if (button) {
+                    button.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+                }
+
+            });
+
+        }
+
+    });
+
+}
